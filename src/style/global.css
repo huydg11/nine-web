@@ -1,0 +1,55 @@
+body {
+
+  font-family: 'Inter', sans-serif;
+
+}
+
+.semibold {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+}
+
+/* SemiBold 600 Italic */
+.semibold-italic {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.extrabold {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+
+}
+
+header {
+  user-select: none;
+  /* Disables text selection */
+  -webkit-user-select: none;
+  /* For WebKit-based browsers */
+  -moz-user-select: none;
+  /* For Firefox */
+  -ms-user-select: none;
+  /* For older IE versions */
+}
+
+
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.lazy-load-image-background,
+.lazy-load-image {
+  display: block !important;
+}

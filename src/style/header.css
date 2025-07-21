@@ -1,0 +1,185 @@
+body {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.nav-link.active {
+  color: white !important; /* Ensure it overrides other styles */
+}
+
+.css-selector {
+  background: linear-gradient(91deg, #04708e, #08aad7, #006d7e, #0cbde3, #007690);
+  background-size: 1000% 1000%;
+
+  -webkit-animation: Animation2 32s ease infinite;
+  -moz-animation: Animation2 32s ease infinite;
+  -o-animation: Animation2 32s ease infinite;
+  animation: Animation2 32s ease infinite;
+}
+
+.scrolled {
+  opacity: 0.99;
+  -webkit-box-shadow: 0 4px 2px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 4px 2px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 2px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+
+@-webkit-keyframes Animation2 {
+  0% {
+    background-position: 0% 51%
+  }
+
+  50% {
+    background-position: 100% 50%
+  }
+
+  100% {
+    background-position: 0% 51%
+  }
+}
+
+@-moz-keyframes Animation2 {
+  0% {
+    background-position: 0% 51%
+  }
+
+  50% {
+    background-position: 100% 50%
+  }
+
+  100% {
+    background-position: 0% 51%
+  }
+}
+
+@-o-keyframes Animation2 {
+  0% {
+    background-position: 0% 51%
+  }
+
+  50% {
+    background-position: 100% 50%
+  }
+
+  100% {
+    background-position: 0% 51%
+  }
+}
+
+@keyframes Animation2 {
+  0% {
+    background-position: 0% 51%
+  }
+
+  50% {
+    background-position: 100% 50%
+  }
+
+  100% {
+    background-position: 0% 51%
+  }
+}
+
+
+
+#header-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+#nine-logo {
+  max-height: 70%;
+  max-width: 10rem;
+  height: auto;
+  object-fit: contain;
+  padding: 10px;
+  padding-top: 2px;
+}
+
+#header-content a {
+  display: block;
+  max-height: 100%;
+}
+
+.navbar {
+  padding-left: 10rem;
+  padding-right: 10rem;
+  /* box-shadow: 0 4px 2px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.19); */
+  transition: box-shadow 0.5s ease-in-out;
+  min-height: 80px;
+
+}
+
+.navbar-brand {
+  padding-right: 0px;
+
+  padding-top: 0px;
+}
+
+.navbar-collapse {
+  justify-content: space-around;
+  font-size: 20px;
+  margin-right: 12rem;
+
+}
+
+.navbar-nav {
+  gap: 20px;
+  text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
+
+}
+
+.navbar-nav .nav-item.active .nav-link {
+  color: white;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: rgb(255 255 255 / 60%);
+}
+
+.navbar-light .navbar-nav .show>.nav-link {
+  color: white !important;
+}
+
+.navbar-light .navbar-nav .nav-link:focus,
+.navbar-light .navbar-nav .nav-link:hover {
+  color: rgb(255 255 255 / 90%);
+}
+
+
+.dropdown-menu {
+  font-size: 1.8rem;
+  text-shadow: none;
+}
+
+.dropdown-item {
+  color: rgb(0, 37, 50);
+  font-weight: 400;
+}
+
+
+@media (max-width: 768px) {
+  .navbar {
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+
+
+}
+
+@media (max-width: 576px) {
+  .navbar-brand {
+    margin-left: 5rem;
+    margin-right: 0px;
+    flex-grow: 1;
+    text-align: center;
+}
+}

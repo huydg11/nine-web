@@ -1,0 +1,491 @@
+#main-content-container {
+    max-width: 1420px;
+    margin: 5rem auto 2rem auto;
+
+
+}
+
+#sub-content-container {
+    margin-left: 5rem;
+    margin-right: 5rem;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+}
+
+#the-container {
+    margin-top: 8rem;
+}
+
+#main-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+
+
+}
+
+#carousel-wrapper {
+
+    align-self: center;
+    width: 80%;
+    position: relative;
+}
+
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    margin-left: 5rem;
+    margin-right: 5rem;
+}
+
+
+.card {
+    border: 1px solid #ddd;
+    /* padding: 16px; */
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 90%;
+    overflow: hidden;
+}
+
+.card-img-top {
+    max-height: 400px;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.carousel-caption h1 {
+    font-size: 2vw;
+    /* Responsive font size based on viewport width */
+    font-weight: bold;
+}
+
+
+.carousel-caption p {
+    font-size: 1vw;
+    /* Responsive font size for the paragraph */
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    padding-top: 100px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0) 100%);
+    color: white;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.5s ease;
+    /* Smooth transition */
+}
+
+.skeleton {
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    animation: skeleton-loading 1.5s infinite;
+}
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+
+    width: 50px;
+    height: 50px;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-color: #e0e0e0;
+    }
+
+    50% {
+        background-color: #f0f0f0;
+    }
+
+    100% {
+        background-color: #e0e0e0;
+    }
+}
+
+
+.carousel-control-prev,
+.carousel-control-next {
+    align-self: center;
+}
+
+
+.title-style {
+    font-size: 3rem;
+    width: fit-content;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 0px;
+}
+
+#title-news-project {
+    max-width: 50rem;
+    margin-left: 5rem;
+}
+
+.project-wrapper {
+    display: flex;
+    gap: 4rem;
+    flex-direction: column;
+}
+
+.post-tags a {
+    font-weight: 700;
+}
+
+.card-title {
+    font-weight: 600;
+    color: #2b4c81;
+}
+
+.card-title:hover {
+    text-decoration: none;
+}
+
+.card-text {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+
+
+.title-color {
+    background: #00CFC7;
+    background: radial-gradient(circle farthest-corner at center center, #00CFC7 0%, #6F7DCF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+
+.img-wrapper {
+    overflow: hidden;
+}
+
+.trucation {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.trucation-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.banner-container {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 2880 / 600;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    background-color: #fff;
+    /* Add a solid background color */
+}
+
+.banner-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    box-sizing: border-box;
+}
+
+.result-container {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    /* Centers horizontally */
+    align-items: center;
+    /* Centers vertically */
+}
+
+.result-image-wrapper {
+    display: flex;
+    justify-content: center;
+    /* Centers the image horizontally */
+    align-items: center;
+    /* Centers the image vertically */
+    width: 50%;
+    height: 100%;
+}
+
+.result-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    /* Ensures the image covers the container */
+    box-sizing: border-box;
+}
+
+
+.heading-text {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.heading-text b {
+    color: #039dab;
+}
+
+.heading-title {
+    font-size: 1.9rem;
+    font-weight: 600;
+    color: #039dab;
+    border-bottom: 1px solid;
+}
+
+#about-page-container {
+    margin-left: 5rem;
+    margin-right: 5rem;
+}
+
+#about-page-wrapper {
+    border-radius: 1rem;
+    display: flex;
+    gap: 3rem;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-bottom: 4rem;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.paragraph-content {
+    font-size: 2rem;
+}
+
+
+/* From Uiverse.io by satyamchaudharydev */
+.button {
+    align-self: center;
+    width: 195px;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    padding-block: 0.5rem;
+    padding-inline: 1.25rem;
+    background-color: rgb(0 107 179);
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffff;
+    gap: 10px;
+    font-weight: bold;
+    border: 3px solid #ffffff4d;
+    outline: none;
+    overflow: hidden;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    transition: all 0.3s ease-in-out;
+}
+
+.button:hover {
+    transform: scale(1.05);
+    border-color: #fff9;
+}
+
+.button:hover .icon {
+    transform: translate(4px);
+}
+
+.button:hover::before {
+    animation: shine 1.5s ease-out infinite;
+}
+
+.button:focus {
+    outline: 1px dotted;
+}
+
+.button::before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    background-image: linear-gradient(120deg,
+            rgba(255, 255, 255, 0) 30%,
+            rgba(255, 255, 255, 0.8),
+            rgba(255, 255, 255, 0) 70%);
+    top: 0;
+    left: -100px;
+    opacity: 0.6;
+}
+
+#sidebar-recommend-heading-wrapper {
+    margin-bottom: 10px;
+}
+
+.recommend-card-heading {
+
+    font-size: 1.2rem;
+}
+
+.recommend-card-date {
+    font-size: 0.8rem;
+}
+
+
+@keyframes shine {
+    0% {
+        left: -100px;
+    }
+
+    60% {
+        left: 100%;
+    }
+
+    to {
+        left: 100%;
+    }
+}
+
+
+
+@media (max-width: 768px) {
+
+    #sub-content-container {
+        margin: 0px;
+    }
+
+
+    #carousel-wrapper {
+        width: 100%;
+
+    }
+
+    .carousel-control-next-icon,
+    .carousel-control-prev-icon {
+
+        width: 30px;
+        height: 30px;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 items per row on tablets */
+        gap: 15px;
+
+
+    }
+
+    .grid-container>.card:nth-last-child(1) {
+        justify-self: center;
+    }
+
+    .card {
+        width: 100%;
+
+    }
+
+    .carousel-caption h1 {
+        font-size: 5vw;
+    }
+
+    .carousel-caption p {
+        font-size: 2.5vw;
+    }
+
+    .carousel-caption {
+
+        text-align: center;
+    }
+
+    #title-news-project {
+        max-width: 40rem;
+        align-self: center;
+        margin-left: 0px;
+    }
+
+    .recommend-card-heading {
+        font-size: 1.8rem;
+    }
+
+    .recommend-card-date {
+        font-size: 1.4rem;
+    }
+
+
+}
+
+@media (max-width: 576px) {
+    #sub-content-container {
+        margin: 0px;
+    }
+
+    #project-detail-wrapper {
+        width: 100%;
+    }
+
+
+    .grid-container {
+        grid-template-columns: 1fr;
+        /* 1 item per row on mobile */
+        gap: 10px;
+        margin-left: 5rem;
+        margin-right: 5rem;
+        gap: 5rem;
+    }
+
+    .card {
+        width: 90%;
+        /* Full width on mobile */
+    }
+
+    .carousel-caption h1 {
+        font-size: 6vw;
+        /* Increase font size even more for mobile */
+    }
+
+    .carousel-caption p {
+        font-size: 3.5vw;
+        /* Increase paragraph font size for mobile */
+    }
+
+    .carousel-caption {
+        /* Further adjust the caption position */
+        text-align: center;
+        /* Add some padding for mobile */
+    }
+}
