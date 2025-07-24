@@ -1,0 +1,109 @@
+#admin-login-wrapper {
+    border-radius: 1rem;
+    display: flex;
+    gap: 3rem;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5rem;
+    padding: 2rem;
+    min-width: 420px;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-bottom: 4rem;
+    background-color: #007793;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#login-logo-wrapper {
+    max-width: 120px;
+    margin-left: 15px;
+}
+
+#admin-login-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+}
+
+#login-text {
+    font-size: 4.5rem;
+    font-weight: 500;
+    color: antiquewhite;
+}
+
+#login-heading-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+#login-input {
+    width: 30rem;
+    height: 4rem;
+    border-radius: 10px;
+    border: none;
+    padding: 1rem;
+    font-size: 1.4rem;
+    outline: none;
+}
+
+#admin-login-button {
+    margin-top: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* From Uiverse.io by adamgiebl */
+.cssbuttons-io-button {
+    display: flex;
+    align-items: center;
+    font-family: inherit;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 17px;
+    padding: 0.8em 1.5em 0.8em 1.2em;
+    color: white;
+    background: #ad5389;
+    background: linear-gradient(0deg,
+            rgba(77, 54, 208, 1) 0%,
+            rgba(132, 116, 254, 1) 100%);
+    border: none;
+    box-shadow: 0 0.7em 1.5em -0.5em #4d36d0be;
+    letter-spacing: 0.05em;
+    border-radius: 20em;
+    justify-content: center;
+}
+
+.cssbuttons-io-button svg {
+    margin-right: 8px;
+}
+
+
+.cssbuttons-io-button:active {
+    box-shadow: 0 0.3em 1em -0.5em #4d36d0be;
+}
+
+.login-link {
+    color: #ffffff;
+    /* Default color */
+    text-decoration: none;
+    /* Optional: removes underline */
+    transition: color 0.3s ease;
+}
+
+.login-link:hover {
+    color: #00aced;
+    text-decoration: none;
+    /* Hover color (light blue for example) */
+}

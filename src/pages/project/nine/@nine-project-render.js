@@ -21,15 +21,19 @@ function NineRender({ project }) {
 
     const formatRole = (role) => {
         const roleMapping = {
-            project_manager: 'Quản lí dự án',
-            translator: 'Dịch thuật',
-            editor: 'Biên dịch',
-            tech: 'Kĩ thuật',
-            ui: "Mỹ thuật",
-            qa: 'Kiểm tra chất lượng'
+            projectManagers: 'Quản lí dự án',
+            translators: 'Dịch thuật',
+            editors: 'Biên dịch',
+            techTeam: 'Kĩ thuật',
+            uiTeam: "Mỹ thuật",
+            qaTeam: 'Kiểm tra chất lượng'
         };
         return roleMapping[role] || role;
     };
+
+    const staffEntries = project?.detail?.staff
+        ? Object.entries(project.detail.staff).filter(([, members]) => members.length > 0)
+        : [];
 
     return (
 
@@ -39,7 +43,7 @@ function NineRender({ project }) {
 
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'space-between' }}>
                 <span className="post-tags" style={{ fontSize: '1.5rem' }}>
-                    <em>{authorLabel}</em> <a style={{color: authorColor}}>{project.by}</a>
+                    <em>{authorLabel}</em> <a style={{ color: authorColor }}>{project.by}</a>
                 </span>
                 <p className="card-text" style={{ fontSize: '1.5rem', marginTop: '0px' }}><small className="text-muted">{project.date}</small></p>
             </div>
@@ -127,11 +131,11 @@ function NineRender({ project }) {
 
                 {/* Staff */}
 
-                {project?.detail?.staff && Object.entries(project.detail.staff).length > 0 && (
+                {staffEntries.length > 0 && (
                     <>
                         <div className="heading-title">Nhân sự:</div>
                         <div id="staff-list">
-                            {Object.entries(project.detail.staff).map(([role, members]) => (
+                            {staffEntries.map(([role, members]) => (
                                 <div key={role} style={{ textAlign: 'center', fontSize: '1.6rem' }}>
                                     <b style={{ color: '#039dab' }}>{formatRole(role)}</b>
                                     <p>{members.join(", ")}</p>

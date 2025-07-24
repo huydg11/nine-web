@@ -33,6 +33,23 @@ function Header() {
         };
     }, []);
 
+    useEffect(() => {
+        const handleScroll = () => {
+            const navbar = document.querySelector('.navbar');
+            if (navbar && window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else if (navbar) {
+                navbar.classList.remove('scrolled');
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     return (
         <header>
             <nav className="navbar css-selector navbar-expand-lg navbar-light bg-light fixed-top">
@@ -70,9 +87,8 @@ function Header() {
                         </li>
 
                         <li
-                            className={`nav-item dropdown ${
-                                isProjectActive ? 'active' : ''
-                            } ${isDropdownOpen ? 'show' : ''}`}
+                            className={`nav-item dropdown ${isProjectActive ? 'active' : ''
+                                } ${isDropdownOpen ? 'show' : ''}`}
                             ref={dropdownRef}
                         >
                             <span
@@ -84,9 +100,8 @@ function Header() {
                                 Dự án
                             </span>
                             <div
-                                className={`dropdown-menu ${
-                                    isDropdownOpen ? 'show' : ''
-                                }`}
+                                className={`dropdown-menu ${isDropdownOpen ? 'show' : ''
+                                    }`}
                                 aria-labelledby="navbarDropdownMenuLink"
                             >
                                 <Link
