@@ -60,7 +60,7 @@ function AboutUs() {
 
                 </div>
 
-                <div>
+                {/* <div>
 
                   <LazyLoadImage
                     className="card-img-top"
@@ -71,7 +71,7 @@ function AboutUs() {
                   />
 
 
-                </div>
+                </div> */}
 
 
 

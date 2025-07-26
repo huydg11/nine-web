@@ -39,7 +39,7 @@ function NineRender({ project }) {
 
 
         <div id="project-content-wrapper">
-            <h1 className="project-title semibold" style={{ color: '#01545c' }}>{project.heading}</h1>
+            <h1 className="project-title semibold" style={{ color: '#01545c', fontSize: "3rem" }}>{project.heading}</h1>
 
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'space-between' }}>
                 <span className="post-tags" style={{ fontSize: '1.5rem' }}>
@@ -170,22 +170,25 @@ function NineRender({ project }) {
 
                 {/* Download Link */}
 
-                {project?.detail?.downloadDetail && Object.entries(project.detail.downloadDetail).length > 0 && (
-                    <>
-                        <div className="heading-title">Link tải & Video hướng dẫn:</div>
-                        <DownloadMenu
-                            title={project.title}
-                            by={project.by}
-                            patch_size={project.detail.patchSize}
-                            patch_version={project.detail.downloadDetail.patchVersion}
-                            official_link={project.detail.downloadDetail.officialLink}
-                            download_1={project.detail.downloadDetail.download1}
-                            download_2={project.detail.downloadDetail.download2}
-                            download_3={project.detail.downloadDetail.download3}
-                            tutorial_video_link={project.detail.downloadDetail.tutorialVideoLink}
-                        />
-                    </>
-                )}
+                {
+                    project?.detail?.downloadDetail &&
+                    Object.values(project.detail.downloadDetail).some(val => val != null && val !== "") && (
+                        <>
+                            <div className="heading-title">Link tải & Video hướng dẫn:</div>
+                            <DownloadMenu
+                                title={project.title}
+                                by={project.by}
+                                patch_size={project.detail.patchSize}
+                                patch_version={project.detail.downloadDetail.patchVersion}
+                                official_link={project.detail.downloadDetail.officialLink}
+                                download_1={project.detail.downloadDetail.download1}
+                                download_2={project.detail.downloadDetail.download2}
+                                download_3={project.detail.downloadDetail.download3}
+                                tutorial_video_link={project.detail.downloadDetail.tutorialVideoLink}
+                            />
+                        </>
+                    )
+                }
 
 
 

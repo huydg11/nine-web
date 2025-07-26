@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import NineLogo from '../../resources/logo/nine-logo-white.png';
 
-import '../../style/admin.css';
-
 import { getJSON } from '../../helper/api';
 
 function Dashboard() {
@@ -16,13 +14,33 @@ function Dashboard() {
 
 
     return (
-        <div className="App gradient-background">
-            <div id="main-content-container">
-                <div id="main-content-wrapper">
-                    
-                </div>
+       <div className="App gradient-background">
+
+
+
+      <div id="main-content-container">
+
+        <div id="main-content-wrapper">
+
+          <div id="about-page-container">
+
+            <div id="about-page-wrapper">
+
+              <div className='paragraph-wrapper'>
+
+                Hello
+
+              </div>
+
             </div>
+
+          </div>
+
         </div>
+
+      </div>
+      
+    </div>
     );
 }
 

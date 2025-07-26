@@ -82,8 +82,8 @@ function DownloadMenu({title, by, patch_size, patch_version, official_link, down
 
                                                 <div className="download-link" style={{ textAlign: 'center' }}>
                                                     <a href={official_link} target="_blank" >
-                                                        <strong>
-                                                            <span style={{ fontSize: '1.8rem' }}>Link mua game bản quyền trên Steam </span>
+                                                        <strong  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
+                                                            <span style={{ fontSize: '1.8rem' }}>Link mua game bản quyền trên Steam </span> 
                                                             <FaLink style={{ color: '#01a9d7', fontSize: '1.4rem' }} />
                                                         </strong>
                                                     </a>
@@ -91,7 +91,7 @@ function DownloadMenu({title, by, patch_size, patch_version, official_link, down
 
                                                 <div className="download-link" style={{ textAlign: 'center' }}>
                                                     <a href={download_1} target="_blank">
-                                                        <strong>
+                                                        <strong  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
                                                             <span style={{ fontSize: '1.8rem' }}>Download patch Việt Ngữ v{patch_version} (Launcher by Hoshi Visual Novel) </span>
                                                             <FaLink style={{ color: '#01a9d7', fontSize: '1.4rem' }} />
                                                         </strong>
@@ -119,7 +119,7 @@ function DownloadMenu({title, by, patch_size, patch_version, official_link, down
 
                                                 <div className="download-link" style={{ textAlign: 'center' }}>
                                                     <a href={official_link} target="_blank" >
-                                                        <strong>
+                                                        <strong style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
                                                             <span style={{ fontSize: '1.8rem' }}>Link mua game bản quyền trên Steam </span>
                                                             <FaLink style={{ color: '#01a9d7', fontSize: '1.4rem' }} />
                                                         </strong>
@@ -128,7 +128,7 @@ function DownloadMenu({title, by, patch_size, patch_version, official_link, down
 
                                                 <div className="download-link" style={{ textAlign: 'center' }}>
                                                     <a href={download_2} target="_blank">
-                                                        <strong>
+                                                        <strong style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
                                                             <span style={{ fontSize: '1.8rem' }}>Download patch Việt Ngữ v{patch_version} (Launcher by Hoshi Visual Novel) </span>
                                                             <FaLink style={{ color: '#01a9d7', fontSize: '1.4rem' }} />
                                                         </strong>
@@ -156,7 +156,7 @@ function DownloadMenu({title, by, patch_size, patch_version, official_link, down
 
                                                 <div className="download-link" style={{ textAlign: 'center' }}>
                                                     <a href={official_link} target="_blank" >
-                                                        <strong>
+                                                        <strong style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
                                                             <span style={{ fontSize: '1.8rem' }}>Link mua game bản quyền trên Steam </span>
                                                             <FaLink style={{ color: '#01a9d7', fontSize: '1.4rem' }} />
                                                         </strong>
@@ -165,7 +165,7 @@ function DownloadMenu({title, by, patch_size, patch_version, official_link, down
 
                                                 <div className="download-link" style={{ textAlign: 'center' }}>
                                                     <a href={download_3} target="_blank">
-                                                        <strong>
+                                                        <strong style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
                                                             <span style={{ fontSize: '1.8rem' }}>Download patch Việt Ngữ v{patch_version} (Launcher by Hoshi Visual Novel) </span>
                                                             <FaLink style={{ color: '#01a9d7', fontSize: '1.4rem' }} />
                                                         </strong>
