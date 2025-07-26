@@ -340,10 +340,6 @@ html {
  * a class directly on the `html` element.
  */
 
-body {
-  font-family: inherit;
-  line-height: inherit;
-}
 
 /**
  * 1. Prevent padding and border from affecting element width.
@@ -431,15 +427,6 @@ table {
   border-collapse: collapse;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  font-weight: inherit;
-}
 
 /**
  * Reset links to optimize for opt-in styling instead of

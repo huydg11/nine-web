@@ -73,7 +73,6 @@ function AdminProjectDetail() {
                 const data = await getJSON(`/Project/${finder}`);
                 console.log('Raw project data from API:', data);
 
-                // Convert dates to input format
                 data.inputDate = parseVNDateToInputDate(data.date);
 
                 if (data.translationProgress) {
@@ -83,7 +82,6 @@ function AdminProjectDetail() {
                 if (data.detail) {
                     data.detail.inputReleaseDate = parseVNDateToInputDate(data.detail.releaseDate);
 
-                    // Process patch history dates
                     if (data.detail.patchHistory) {
                         data.detail.patchHistory = data.detail.patchHistory.map(ph => ({
                             ...ph,
@@ -218,13 +216,20 @@ function AdminProjectDetail() {
         try {
             updateSubmissionProgress('Preparing project data...', 10);
 
-            // Create FormData for multipart/form-data request
-            const formData = new FormData();
+            const stripHtml = html => {
+                const doc = new DOMParser().parseFromString(html, 'text/html');
+                return doc.body.textContent || '';
+            };
+            const plainText = stripHtml(project.detail.fullDescription);
+            const shortDesc = plainText.slice(0, 220);
 
-            // Add the file if selected
-            if (thumbnailFile) {
-                formData.append('ThumbnailFile', thumbnailFile);
-            }
+            let link = project.type === 'project'
+                ? `/project/nine/${project.finder}`
+                : `/post/${project.finder}`;
+
+            const formData = new FormData();
+            if (thumbnailFile) formData.append('ThumbnailFile', thumbnailFile);
+
 
             // Add all other fields
             formData.append('Id', project.id);
@@ -232,21 +237,39 @@ function AdminProjectDetail() {
             formData.append('Heading', project.heading);
             formData.append('By', project.by);
             formData.append('Status', project.status);
-            formData.append('ShortDescription', project.shortDescription);
+            formData.append('ShortDescription', shortDesc);
             formData.append('Date', toISODateTime(project.inputDate));
-            formData.append('Link', project.link);
+            formData.append('Link', link);
             formData.append('Type', project.type);
             formData.append('IsCarousel', project.isCarousel);
 
-            // Translation Progress
-            if (project.translationProgress) {
-                formData.append('TranslationProgress.Translate', parseFloat(project.translationProgress.translate) || 0);
-                formData.append('TranslationProgress.Edit', parseFloat(project.translationProgress.edit) || 0);
-                formData.append('TranslationProgress.QA', parseFloat(project.translationProgress.qa) || 0);
-                if (project.translationProgress.inputLastUpdated) {
-                    formData.append('TranslationProgress.LastUpdated', toISODateTime(project.translationProgress.inputLastUpdated));
+
+            if (project.type === 'post') {
+                
+            } else {
+                formData.append('Date', toISODateTime(project.inputDate));
+                if (project.translationProgress) {
+                    formData.append(
+                        'TranslationProgress.Translate',
+                        parseFloat(project.translationProgress.translate) || 0
+                    );
+                    formData.append(
+                        'TranslationProgress.Edit',
+                        parseFloat(project.translationProgress.edit) || 0
+                    );
+                    formData.append(
+                        'TranslationProgress.QA',
+                        parseFloat(project.translationProgress.qa) || 0
+                    );
+                    if (project.translationProgress.inputLastUpdated) {
+                        formData.append(
+                            'TranslationProgress.LastUpdated',
+                            toISODateTime(project.translationProgress.inputLastUpdated)
+                        );
+                    }
                 }
             }
+
 
             // Detail fields
             if (project.detail) {

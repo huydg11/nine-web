@@ -3,7 +3,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useLocation, useNavigate } from 'react-router-dom';
 import NineLogo from '../../resources/logo/nine-logo-white.png';
 
-import { getJSON } from '../../helper/api';
+import { getJSON, deleteWithStringBody } from '../../helper/api'; 
 
 function StaffList() {
     const navigate = useNavigate();
@@ -62,25 +62,14 @@ function StaffList() {
         setCurrentPage(1);
     };
 
-     const handleDeactivate = async (userID) => {
+    const handleDeactivate = async (userID) => {
         try {
-            const response = await fetch(`https://localhost:7295/api/Admin/disableUser/${userID}`, {
-                method: 'DELETE',
-                headers: {
-                    'accept': '*/*'
-                }
-            });
-
-            if (response.ok) {
-                // Optionally show success message or refresh the list
-                alert('Project disabled successfully');
-                fetchPostList(location.pathname); // Refresh list
-            } else {
-                alert('Failed to disable account');
-            }
+            await deleteWithStringBody('/Admin/disableUser', userID);
+            alert('Account status changed successfully');
+            fetchStaff(); // Refresh staff list
         } catch (error) {
-            console.error('Error disabling project:', error);
-            alert('An error occurred while disabling the project');
+            console.error('Error disabling account:', error);
+            alert('An error occurred while disabling the account');
         }
     };
 
@@ -102,7 +91,7 @@ function StaffList() {
                     className="w-full border rounded p-2"
                 />
 
-                 <button
+                <button
                     onClick={() => navigate(`/admin/account/create`)}
                     className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-2 rounded"
                 >
@@ -133,22 +122,22 @@ function StaffList() {
                                         {staff.isActive ? 'Đang hoạt động' : 'Không hoạt động'}
                                     </span>
                                 </td>
-                                 <button
-                                        onClick={() => navigate(`/admin/account/edit/${staff.id}`)}
-                                        className="bg-blue-500 hover:bg-blue-600 text-black py-1 px-2 rounded"
-                                    >
-                                        Edit
-                                    </button>
-                                    <button
-                                        onClick={() => {
-                                            if (window.confirm("Are you sure you want to active this account?")) {
-                                                handleDeactivate(staff.id);
-                                            }
-                                        }}
-                                        className="bg-red-500 hover:bg-red-600 text-white py-1 px-2 rounded"
-                                    >
-                                       {staff.isActive ? 'Deactive' : 'Active'}
-                                    </button>
+                                <button
+                                    onClick={() => navigate(`/admin/account/update/${staff.id}`)}
+                                    className="bg-blue-500 hover:bg-blue-600 text-black py-1 px-2 rounded"
+                                >
+                                    Edit
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        if (window.confirm("Are you sure you want to active this account?")) {
+                                            handleDeactivate(staff.id);
+                                        }
+                                    }}
+                                    className="bg-red-500 hover:bg-red-600 text-white py-1 px-2 rounded"
+                                >
+                                    {staff.isActive ? 'Deactive' : 'Active'}
+                                </button>
                             </tr>
                         ))}
                         {currentItems.length === 0 && (

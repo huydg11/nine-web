@@ -75,32 +75,19 @@ function ProjectForm({
                             onChange={handleChange}
                         />
                     </label>
-                    <label className="label">
+                    <label>
                         Type:
-                        <input
-                            className="input"
-                            name="type"
-                            value={project.type || ''}
-                            onChange={handleChange}
-                        />
+                        <select name="type" value={project.type} onChange={handleChange}>
+                            <option value="project">Project</option>
+                            <option value="post">Post</option>
+                        </select>
                     </label>
-                    <label className="label">
+                    <label>
                         Status:
-                        <input
-                            className="input"
-                            name="status"
-                            value={project.status || ''}
-                            onChange={handleChange}
-                        />
-                    </label>
-                    <label className="label">
-                        Short Description:
-                        <textarea
-                            className="textarea"
-                            name="shortDescription"
-                            value={project.shortDescription || ''}
-                            onChange={handleChange}
-                        />
+                        <select name="status" value={project.status} onChange={handleChange}>
+                            <option value="On-Going">On-Going</option>
+                            <option value="Complete">Complete</option>
+                        </select>
                     </label>
                     <label className="label">
                         Full Description:
@@ -108,15 +95,6 @@ function ProjectForm({
                             className="textarea"
                             name="Detail.fullDescription"
                             value={project.detail.fullDescription || ''}
-                            onChange={handleChange}
-                        />
-                    </label>
-                    <label className="label">
-                        Link:
-                        <input
-                            className="input"
-                            name="link"
-                            value={project.link || ''}
                             onChange={handleChange}
                         />
                     </label>
@@ -371,7 +349,7 @@ function ProjectForm({
             {project.detail.staff && Object.entries(project.detail.staff).map(([role, members]) => (
                 <fieldset key={role} className="fieldset">
                     <legend className="legend">{role.charAt(0).toUpperCase() + role.slice(1)}</legend>
-                    
+
                     {/* Current Staff Members */}
                     <div className="flex flex-wrap gap-2 mb-2">
                         {members && members.length > 0 ? (
@@ -516,8 +494,9 @@ function ProjectForm({
                     ))}
                 </fieldset>
             )}
-
-            <button type="submit" className="button">Update Project</button>
+            <div style={{display:'flex', flexDirection: 'column', alignItems:'center'}}>
+                 <button type="submit" className="button">Update Project</button>
+            </div>                
         </form>
     );
 }

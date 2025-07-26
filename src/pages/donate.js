@@ -115,58 +115,72 @@ function Donate() {
       <div id="main-content-container">
         <div id="main-content-wrapper">
           <div id="about-page-container">
-            <div id="about-page-wrapper">
-              <div className='paragraph-wrapper'>
-                <h2>Donate cho Nine Translation</h2>
-                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                  <input
-                    type="email"
-                    name="userEmail"
-                    placeholder="Your Email"
-                    value={formData.userEmail}
-                    onChange={handleChange}
-                    required
-                    disabled={isLoading}
-                  />
+            <div className="donate-container">
+              <div className="donate-card">
+                <h2 className="donate-title">Ủng hộ Nine Translation</h2>
+                <p className="donate-text">
+                  Cảm ơn các bạn đã đồng hành cùng Nine Translation từ những ngày đầu.
+                  Sự hỗ trợ của bạn giúp chúng mình có thể mua game bản quyền và duy trì tên miền để
+                  tiếp tục mang đến các bản dịch chất lượng.
+                </p>
 
-                  <select
-                    name="projectFinder"
-                    value={formData.projectFinder}
-                    onChange={handleChange}
-                    disabled={isLoading || projects.length === 0}
-                  >
-                    <option value="">Donate for Project...</option>
-                    {projects.map(proj => (
-                      <option key={proj.id} value={proj.finder}>
-                        {proj.finder}
-                      </option>
-                    ))}
-                  </select>
+                <form className="donate-form" onSubmit={handleSubmit}>
+                  <label>
+                    Email của bạn <span className="required">*</span>
+                    <input
+                      type="email"
+                      name="userEmail"
+                      value={formData.userEmail}
+                      onChange={handleChange}
+                      disabled={isLoading}
+                      required
+                    />
+                  </label>
 
-                  <input
-                    type="text"
-                    name="discordUsername"
-                    placeholder="Discord Username"
-                    value={formData.discordUsername}
-                    onChange={handleChange}
-                    disabled={isLoading}
-                  />
+                  <label>
+                    Donate cho dự án
+                    <select
+                      name="projectFinder"
+                      value={formData.projectFinder}
+                      onChange={handleChange}
+                      disabled={isLoading || projects.length === 0}
+                    >
+                      <option value="">Chọn dự án...</option>
+                      {projects.map(p => (
+                        <option key={p.id} value={p.finder}>{p.finder}</option>
+                      ))}
+                    </select>
+                  </label>
 
-                  <input
-                    type="number"
-                    name="amount"
-                    placeholder="Amount (e.g. 100000)"
-                    value={formData.amount}
-                    onChange={handleChange}
-                    required
-                    disabled={isLoading}
-                  />
+                  <label>
+                    Discord Username
+                    <input
+                      type="text"
+                      name="discordUsername"
+                      value={formData.discordUsername}
+                      onChange={handleChange}
+                      disabled={isLoading}
+                    />
+                  </label>
 
-                  <button type="submit" disabled={isLoading}>
-                    {isLoading ? 'Processing...' : 'Donate'}
+                  <label>
+                    Số tiền (VNĐ) <span className="required">*</span>
+                    <input
+                      type="number"
+                      name="amount"
+                      value={formData.amount}
+                      onChange={handleChange}
+                      disabled={isLoading}
+                      required
+                    />
+                  </label>
+
+                  <button type="submit" className="donate-button" disabled={isLoading}>
+                    {isLoading ? 'Đang xử lý...' : 'Donate'}
                   </button>
                 </form>
-                {responseMessage && <p>{responseMessage}</p>}
+
+                {responseMessage && <div className="response-message">{responseMessage}</div>}
               </div>
             </div>
           </div>

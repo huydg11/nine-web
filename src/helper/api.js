@@ -2,8 +2,29 @@ export const API_BASE = 'https://localhost:7295/api';
 
 const token = localStorage.getItem('authToken');
 
+export async function deleteWithStringBody(path, stringPayload) {
+  const token = localStorage.getItem('authToken');
 
-// Generic GET request returning JSON
+  const res = await fetch(`${API_BASE}${path}`, {
+    method: 'DELETE',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(stringPayload), // Send as JSON string
+  });
+
+  if (!res.ok) {
+    const errorText = await res.text();
+    throw new Error(`HTTP ${res.status} for ${path}: ${errorText}`);
+  }
+
+  return res.text(); 
+}
+
+
+
 export async function getJSON(path) {
   const token = localStorage.getItem('authToken');
   const res = await fetch(`${API_BASE}${path}`, {
@@ -15,11 +36,12 @@ export async function getJSON(path) {
 
   if (!res.ok) throw new Error(`HTTP ${res.status} for ${path}`);
 
-  // Handle empty responses
+
   const text = await res.text();
   return text ? JSON.parse(text) : null;
 }
-// Generic POST request sending and receiving JSON
+
+
 export async function postJSON(path, data, isFormData = false) {
   const token = localStorage.getItem('authToken');
 
@@ -47,7 +69,7 @@ export async function postJSON(path, data, isFormData = false) {
     return res.json();
   }
 
-  return null; // Or return res.text() if you want text instead
+  return null;
 }
 
 

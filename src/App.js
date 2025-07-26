@@ -19,6 +19,8 @@ import AdminProjectDetail from './pages/admin/detail.js';
 import DonationHistory from './pages/admin/donationHistory.js';
 import Account from './pages/admin/account.js';
 import CreateAccount from './pages/admin/createAccount.js';
+import UpdateAccount from './pages/admin/updateAccount.js';
+import ChangePassword from './pages/admin/changePassword.js';
 
 import './style/global.css';
 import './style/header.css';
@@ -82,6 +84,14 @@ function AppWrapper() {
     {
       path: '/admin/account/create',
       element: <PrivateRoute><CreateAccount /></PrivateRoute>
+    },
+    {
+      path: '/admin/account/update/*',
+      element: <PrivateRoute><UpdateAccount /></PrivateRoute>
+    },
+    {
+      path: '/admin/account/changepassword/',
+      element: <PrivateRoute><ChangePassword /></PrivateRoute>
     },
   ];
 

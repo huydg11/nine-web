@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import NineLogo from '../../resources/logo/nine-logo-white.png';
+import * as XLSX from 'xlsx';
+import { saveAs } from 'file-saver';
 
 import { getJSON } from '../../helper/api';
 
@@ -94,6 +96,29 @@ function DonationHistory() {
         return d.toLocaleString('vi-VN'); // Format date to Vietnamese style
     };
 
+    const exportToExcel = () => {
+        // use filteredItems if you want only current filter/sort, 
+        // or donationList for the full dataset
+        const dataToExport = filteredItems.map(d => ({
+            ID: d.id,
+            'Ngày giao dịch': formatDate(d.transactionDate),
+            'Số tiền (VND)': d.amount,
+            'Email người dùng': d.userEmail,
+            'Trạng thái': d.status,
+            'Mô tả': d.description || ''
+        }));
+
+        // convert to worksheet
+        const worksheet = XLSX.utils.json_to_sheet(dataToExport);
+        // create a new workbook & append the worksheet
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, 'Donations');
+        // write to binary array
+        const wbout = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+        // trigger download
+        saveAs(new Blob([wbout], { type: 'application/octet-stream' }), 'LichSuQuyenGop.xlsx');
+    };
+
     return (
         <div className="App gradient-background p-4">
             {/* Header */}
@@ -111,7 +136,16 @@ function DonationHistory() {
                     onChange={handleSearchChange}
                     className="w-full border rounded p-2"
                 />
+
+    
             </div>
+
+             <button
+                    onClick={exportToExcel}
+                    className="bg-green-600 hover:bg-green-700 text-white rounded px-4"
+                >
+                    Export to Excel
+                </button>
 
             {/* Table */}
             <div className="overflow-x-auto">

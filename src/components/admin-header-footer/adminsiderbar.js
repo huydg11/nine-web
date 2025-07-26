@@ -1,12 +1,20 @@
 /*eslint-disable*/
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import NotificationDropdown from "../../components/notificationdropdown";
 import UserDropdown from "../../components/userdropdown";
 
 export default function AdminSidebar() {
   const [collapseShow, setCollapseShow] = React.useState("hidden");
+  const navigate = useNavigate();
+
+   const handleLogout = () => {
+    localStorage.removeItem('authToken');
+
+    navigate('/admin/portal/login');
+  };
+
   return (
     <>
       <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-white flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6">
@@ -50,7 +58,7 @@ export default function AdminSidebar() {
                     className="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
                     to="/"
                   >
-                    Notus React
+                    Nine Translation
                   </Link>
                 </div>
                 <div className="w-6/12 flex justify-end">
@@ -129,6 +137,38 @@ export default function AdminSidebar() {
               </li>
 
              
+            </ul>
+
+            {/* Divider */}
+            <hr className="my-4 md:min-w-full" />
+            {/* Heading */}
+            <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
+              Account
+            </h6>
+            {/* Navigation */}
+             <ul className="md:flex-col md:min-w-full flex flex-col list-none">
+
+              {/* <li className="items-center">
+                 <Link
+                  className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
+                  to="/admin/account/changepassword"
+                >
+                  <i className="fas fa-newspaper text-blueGray-400 mr-2 text-sm"></i>{" "}
+                  Change Password
+                </Link>
+              </li> */}
+              
+
+
+              <li className="items-center">
+                <button
+                  className="w-full text-left text-xs uppercase py-3 font-bold block text-red-600 hover:text-red-800"
+                  onClick={handleLogout}
+                >
+                  <i className="fas fa-sign-out-alt mr-2 text-sm"></i>
+                  Logout
+                </button>
+              </li>    
 
              
             </ul>

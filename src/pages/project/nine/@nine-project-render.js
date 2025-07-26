@@ -115,7 +115,7 @@ function NineRender({ project }) {
                 {/* Translation Progress */}
 
 
-                {project?.translationProgress && (
+                {project?.translationProgress && project.type != "post" && (
                     <>
                         <div className="heading-title">Tiến độ dịch:</div>
                         <TranslationProgress

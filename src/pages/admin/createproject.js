@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getJSON, postJSON } from '../../helper/api';
-import ProjectFormCreate from '../../components/projectFormCreate';
+import ProjectForm from '../../components/projectForm';
 
 // Helper to convert date string from input to ISO datetime format
 function toISODateTime(dateStr) {
@@ -23,11 +23,9 @@ const emptyProject = {
   finder: '',
   heading: '',
   by: '',
-  status: '',
-  shortDescription: '',
+  type: 'project',         // default type
+  status: 'On-Going',      // default status
   inputDate: '',
-  link: '',
-  type: '',
   isCarousel: false,
   translationProgress: { translate: 0, edit: 0, qa: 0, inputLastUpdated: '' },
   detail: {
@@ -168,21 +166,29 @@ export default function AdminProjectCreate() {
     try {
       updateSubmissionProgress('Preparing project data...', 10);
 
-      const formData = new FormData();
+      const stripHtml = html => {
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        return doc.body.textContent || '';
+      };
+      const plainText = stripHtml(project.detail.fullDescription);
+      const shortDesc = plainText.slice(0, 220);
 
-      // Add thumbnail file if selected
-      if (thumbnailFile) {
-        formData.append('ThumbnailFile', thumbnailFile);
-      }
+      let link = project.type === 'project'
+        ? `/project/nine/${project.finder}`
+        : `/post/${project.finder}`;
+
+      const formData = new FormData();
+      if (thumbnailFile) formData.append('ThumbnailFile', thumbnailFile);
+
 
       // Basic project fields
       formData.append('Finder', project.finder);
       formData.append('Heading', project.heading);
       formData.append('By', project.by);
       formData.append('Status', project.status);
-      formData.append('ShortDescription', project.shortDescription);
+      formData.append('ShortDescription', shortDesc);
       formData.append('Date', toISODateTime(project.inputDate));
-      formData.append('Link', project.link);
+      formData.append('Link', link);
       formData.append('Type', project.type);
       formData.append('IsCarousel', project.isCarousel);
 
@@ -440,7 +446,7 @@ export default function AdminProjectCreate() {
         }
       `}</style>
 
-      <ProjectFormCreate
+      <ProjectForm
         project={project}
         allStaff={allStaff}
         thumbnailFile={thumbnailFile}

@@ -15,7 +15,6 @@ function PrivateRoute({ children, requiredRole }) {
     }
 
     if (requiredRole && role !== requiredRole) {
-      // Optional: redirect to unauthorized or dashboard
       return <Navigate to="/admin/dashboard" replace />;
     }
 
